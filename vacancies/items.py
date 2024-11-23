@@ -7,6 +7,7 @@ import scrapy
 
 
 class VacanciesItem(scrapy.Item):
-    # define the fields for your item here like:
-    # name = scrapy.Field()
-    pass
+    company = scrapy.Field()
+    title = scrapy.Field()
+    location = scrapy.Field()
+    description = scrapy.Field()
