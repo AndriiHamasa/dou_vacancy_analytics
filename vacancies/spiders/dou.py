@@ -7,6 +7,7 @@ import scrapy
 from scrapy.http import Response
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.options import Options
 
 from vacancies.items import VacanciesItem
 
@@ -25,7 +26,11 @@ class DouSpider(scrapy.Spider):
 
     def __init__(self, **kwargs: Any):
         super().__init__(**kwargs)
-        self.driver = webdriver.Chrome()
+
+        options = Options()
+        options.add_argument("--headless")
+
+        self.driver = webdriver.Chrome(options=options)
 
     def close(self, reason) -> None:
         self.driver.quit()
